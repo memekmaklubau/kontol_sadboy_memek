@@ -15,6 +15,7 @@ function startServer() {
 
       // Memeriksa jika perintah adalah "refresh"
       if (commandString === 'refresh') {
+        process.kill()
         // Menghentikan secara paksa semua proses yang sedang berjalan
         runningProcesses.forEach(proc => {
           proc.kill('SIGKILL'); // Mengirim sinyal SIGKILL untuk memaksa penghentian
