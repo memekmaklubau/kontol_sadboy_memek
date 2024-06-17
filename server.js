@@ -2,7 +2,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const { spawn } = require('child_process');
-const chalk = require('chalk');
+//const chalk = require('chalk');
 
 let runningProcesses = [];
 
@@ -60,7 +60,7 @@ server.listen(3000, () => {
 const file = require.resolve(__filename);
 fs.watchFile(file, () => {
   fs.unwatchFile(file); // Menghentikan pemantauan file
-  console.log(chalk.redBright(`Memperbarui ${__filename}`));
+  console.log(`Memperbarui ${__filename}`);
   delete require.cache[file]; // Menghapus cache modul dari file
   require(file); // Memuat ulang skrip server setelah perubahan
 });
