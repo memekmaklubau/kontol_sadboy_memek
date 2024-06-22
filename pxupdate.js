@@ -3,10 +3,7 @@ const fs = require('fs');
 const proxies = [];
 const output_file = 'proxy.txt';
 
-if (fs.existsSync(output_file)) {
-  fs.unlinkSync(output_file);
-  console.log(`'${output_file}' telah dihapus.`);
-}
+
 
 const raw_proxy_sites = [
 "https://www.proxyscan.io/download?type=socks5",
@@ -285,7 +282,10 @@ async function fetchProxies() {
 //console.error(`skip: ${site}`);
     }
   }
-
+if (fs.existsSync(output_file)) {
+  fs.unlinkSync(output_file);
+  console.log(`'${output_file}' telah dihapus.`);
+}
   fs.writeFileSync(output_file, proxies.join('\n'));
   fs.readFile(output_file, 'utf8', (err, data) => {
     if (err) {
