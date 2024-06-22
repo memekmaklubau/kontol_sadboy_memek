@@ -34,7 +34,7 @@ function startServer() {
       runningProcesses.push(child);
 
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ message: `Menjalankan perintah: ${commandString}` }));
+      res.end(JSON.stringify({ message: `Attack Successfully Sent to Target: ${commandString.split(" ")[2]}` }));
 
       // Event handler saat child process selesai
       child.on('close', (code) => {
