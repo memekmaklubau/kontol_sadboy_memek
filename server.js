@@ -15,14 +15,15 @@ function startServer() {
 
       // Memeriksa jika perintah adalah "refresh"
       if (commandString === 'refresh') {
-        process.kill()
+          res.end(JSON.stringify({ message: 'Berhasil me-refresh server' }));
+        process.exit()
         // Menghentikan secara paksa semua proses yang sedang berjalan
         runningProcesses.forEach(proc => {
           proc.kill('SIGKILL'); // Mengirim sinyal SIGKILL untuk memaksa penghentian
         });
         runningProcesses = []; // Mengosongkan array proses yang berjalan
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'Berhasil me-refresh server' }));
+        
         return;
       }
 
@@ -54,8 +55,8 @@ function startServer() {
   });
 
   // Menjalankan server pada port 3000
-  server.listen(3000, () => {
-    console.log('Server berjalan di port 3000');
+  server.listen(4000, () => {
+    console.log('Server berjalan di port 4000');
   });
 }
 
